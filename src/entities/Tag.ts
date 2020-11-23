@@ -14,7 +14,4 @@ export class Tag {
   @ManyToMany(() => JobPosting, jobPosting => jobPosting.tags)
   jobs: JobPosting[];
 
-  @ManyToOne(() => Category, category => category.tags)
-  category: Category[];
-
 };

@@ -1,6 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { JobPosting } from './JobPosting';
-import { Tag } from './Tag';
+import { SubCategory } from './SubCategory';
 
 @Entity()
 export class Category {
@@ -11,10 +10,7 @@ export class Category {
   @Column()
   name: string;
 
-  @OneToMany(() => JobPosting, jobPosting => jobPosting.category)
-  jobPostings: JobPosting[];
-
-  @OneToMany(() => Tag, tag => tag.category)
-  tags: Tag[]
+  @OneToMany(() => SubCategory, subCategory => subCategory.category)
+  subCategories: SubCategory[];
 
 };

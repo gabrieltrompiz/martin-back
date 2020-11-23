@@ -3,6 +3,8 @@ import { Company } from './Company';
 import { Category } from './Category';
 import { JobToCandidate } from './JobToCandidates';
 import { Tag } from './Tag';
+import { SubCategory } from './SubCategory';
+import { Benefit } from './Benefit';
 
 export enum Modality {
   'FULL_TIME',
@@ -28,8 +30,8 @@ export class JobPosting {
   @ManyToOne(() => Company, company => company.jobPostings)
   company: Company;
 
-  @ManyToOne(() => Category, jobCategory => jobCategory.jobPostings)
-  category: Category;
+  @ManyToOne(() => SubCategory, subCategory => subCategory.jobPostings)
+  subCategory: SubCategory;
 
   @Column()
   title: string;
@@ -64,5 +66,9 @@ export class JobPosting {
 
   @CreateDateColumn()
   createdAt: Date;
+
+  @ManyToMany(() => Benefit, benefit => benefit.jobPostings)
+  @JoinTable()
+  benefits: Benefit[];
 
 };
