@@ -1,4 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { JobToCandidate } from './JobToCandidates';
 import { Profile } from './Profile';
 
 @Entity()
@@ -33,5 +34,8 @@ export class User {
 
   @Column({ nullable: false })
   githubUrl: string;
+
+  @OneToMany(() => JobToCandidate, jobToCandidate => jobToCandidate.user)
+  appliedTo: JobToCandidate[];
 
 };

@@ -1,8 +1,9 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { JobPosting } from './JobPosting';
+import { Tag } from './Tag';
 
 @Entity()
-export class JobCategory {
+export class Category {
 
   @PrimaryGeneratedColumn()
   id: number;
@@ -12,5 +13,8 @@ export class JobCategory {
 
   @OneToMany(() => JobPosting, jobPosting => jobPosting.category)
   jobPostings: JobPosting[];
+
+  @OneToMany(() => Tag, tag => tag.category)
+  tags: Tag[]
 
 };

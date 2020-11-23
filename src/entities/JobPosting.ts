@@ -1,6 +1,7 @@
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Company } from './Company';
-import { JobCategory } from './JobCategory';
+import { Category } from './Category';
+import { JobToCandidate } from './JobToCandidates';
 import { Tag } from './Tag';
 
 export enum Modality {
@@ -27,17 +28,20 @@ export class JobPosting {
   @ManyToOne(() => Company, company => company.jobPostings)
   company: Company;
 
-  @ManyToOne(() => JobCategory, jobCategory => jobCategory.jobPostings)
-  category: JobCategory;
+  @ManyToOne(() => Category, jobCategory => jobCategory.jobPostings)
+  category: Category;
 
   @Column()
   title: string;
 
   @Column({ nullable: true })
-  salary: number; // FIXME: deberia ser number???
+  salaryFrom: number;
+
+  @Column({ nullable: true })
+  salaryTo: number;
 
   @Column()
-  description: string
+  description: string;
 
   @Column({
     type: 'enum',
@@ -54,5 +58,11 @@ export class JobPosting {
   @ManyToMany(() => Tag, tag => tag.jobs)
   @JoinTable()
   tags: Tag[];
+
+  @OneToMany(() => JobToCandidate, jobToCandidate => jobToCandidate.job)
+  candidates: JobToCandidate[];
+
+  @CreateDateColumn()
+  createdAt: Date;
 
 };

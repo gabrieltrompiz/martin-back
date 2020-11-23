@@ -1,4 +1,5 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Category } from './Category';
 import { JobPosting } from './JobPosting';
 
 @Entity()
@@ -12,5 +13,8 @@ export class Tag {
 
   @ManyToMany(() => JobPosting, jobPosting => jobPosting.tags)
   jobs: JobPosting[];
+
+  @ManyToOne(() => Category, category => category.tags)
+  category: Category[];
 
 };
