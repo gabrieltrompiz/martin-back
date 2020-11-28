@@ -10,13 +10,14 @@ RUN npm install -s
 
 COPY . ./
 
+EXPOSE $PORT
+
 CMD ["npm", "run", "dev"]
+
 
 
 FROM development AS production
 
 RUN npm run build
-
-EXPOSE $PORT
 
 CMD ["node", "dist/main.js"]
