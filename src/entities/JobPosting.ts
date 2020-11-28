@@ -5,6 +5,7 @@ import { JobToCandidate } from './JobToCandidates';
 import { Tag } from './Tag';
 import { SubCategory } from './SubCategory';
 import { Benefit } from './Benefit';
+import { Country } from './Country';
 
 export enum Modality {
   'FULL_TIME',
@@ -19,7 +20,13 @@ export enum Seniority {
   'SEMI_SENIOR',
   'SENIOR',
   'EXPERT'
-}
+};
+
+export enum Locality {
+  'REMOTE',
+  'ON_SITE',
+  'PARTIALLY_REMOTE'
+};
 
 @Entity()
 export class JobPosting {
@@ -66,6 +73,16 @@ export class JobPosting {
 
   @CreateDateColumn()
   createdAt: Date;
+
+  @Column({
+    type: 'enum',
+    enum: Locality
+  })
+  locality: Locality
+
+  @ManyToMany(() => Country, country => country.jobPostings)
+  @JoinTable()
+  countries: Country[]
 
   @ManyToMany(() => Benefit, benefit => benefit.jobPostings)
   @JoinTable()
