@@ -1,6 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { JobToCandidate } from './JobToCandidates';
-import { Profile } from './Profile';
+import { JobToCandidate } from './JobToCandidates.entity';
+import { Profile } from './Profile.entity';
 
 @Entity({ name: 'users' })
 export class User {

@@ -1,4 +1,4 @@
-FROM node:lts
+FROM node:lts AS development
 
 ENV PORT $PORT
 
@@ -9,6 +9,11 @@ COPY package.json ./
 RUN npm install -s
 
 COPY . ./
+
+CMD ["npm", "run", "dev"]
+
+
+FROM development AS production
 
 RUN npm run build
 

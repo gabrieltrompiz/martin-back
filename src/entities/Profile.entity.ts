@@ -1,5 +1,5 @@
-import { Column, Entity, ManyToOne } from 'typeorm';
-import { User } from './User';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from './User.entity';
 
 export enum Language {
   'ESP',
@@ -8,6 +8,9 @@ export enum Language {
 
 @Entity({ name: 'profile' })
 export class Profile {
+
+  @PrimaryGeneratedColumn()
+  id: number
 
   @ManyToOne(() => User, user => user.profiles)
   user: User;

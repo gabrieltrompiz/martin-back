@@ -1,6 +1,6 @@
-import { Column, CreateDateColumn, Entity, ManyToOne } from 'typeorm';
-import { JobPosting } from './JobPosting';
-import { User } from './User';
+import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { JobPosting } from './JobPosting.entity';
+import { User } from './User.entity';
 
 export enum Stage {
   'DRAFT',
@@ -12,6 +12,9 @@ export enum Stage {
 
 @Entity({ name: 'job_candidate' })
 export class JobToCandidate {
+
+  @PrimaryGeneratedColumn()
+  id: number
 
   @Column()
   jobId: number;

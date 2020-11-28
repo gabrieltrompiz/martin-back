@@ -1,11 +1,11 @@
 import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Company } from './Company';
-import { Category } from './Category';
-import { JobToCandidate } from './JobToCandidates';
-import { Tag } from './Tag';
-import { SubCategory } from './SubCategory';
-import { Benefit } from './Benefit';
-import { Country } from './Country';
+import { Company } from './Company.entity';
+import { Category } from './Category.entity';
+import { JobToCandidate } from './JobToCandidates.entity';
+import { Tag } from './Tag.entity';
+import { SubCategory } from './SubCategory.entity';
+import { Benefit } from './Benefit.entity';
+import { Country } from './Country.entity';
 
 export enum Modality {
   'FULL_TIME',
