@@ -6,7 +6,7 @@ export enum Language {
   'EN'
 };
 
-@Entity()
+@Entity({ name: 'profile' })
 export class Profile {
 
   @ManyToOne(() => User, user => user.profiles)

@@ -28,7 +28,7 @@ export enum Locality {
   'PARTIALLY_REMOTE'
 };
 
-@Entity()
+@Entity({ name: 'job' })
 export class JobPosting {
   
   @PrimaryGeneratedColumn()

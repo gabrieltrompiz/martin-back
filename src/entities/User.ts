@@ -2,7 +2,7 @@ import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { JobToCandidate } from './JobToCandidates';
 import { Profile } from './Profile';
 
-@Entity()
+@Entity({ name: 'users' })
 export class User {
   
   @PrimaryGeneratedColumn()

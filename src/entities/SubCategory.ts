@@ -2,7 +2,7 @@ import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'ty
 import { Category } from './Category';
 import { JobPosting } from './JobPosting';
 
-@Entity()
+@Entity({ name: 'subcategory' })
 export class SubCategory {
 
   @PrimaryGeneratedColumn()

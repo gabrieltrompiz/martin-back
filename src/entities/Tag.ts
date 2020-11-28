@@ -1,8 +1,7 @@
-import { Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Category } from './Category';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { JobPosting } from './JobPosting';
 
-@Entity()
+@Entity({ name: 'tag' })
 export class Tag {
 
   @PrimaryGeneratedColumn()

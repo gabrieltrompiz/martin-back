@@ -10,7 +10,7 @@ export enum Stage {
   'FINISHED'
 }
 
-@Entity()
+@Entity({ name: 'job_candidate' })
 export class JobToCandidate {
 
   @Column()
